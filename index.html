@@ -1,25 +1,90 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>H.J. Kim, First pages</title>
-		<link rel="stylesheet" type="text/css" href="/css/main.css">
-	</head>
-	<body>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-			</ul>
-		</nav>
-		<div class="container">
-			<div class="blurb">
-				<h1>Hi, I'm H J, a software developer and a long distance runner!</h1>
-				<p>
-				I'm opening a blog to make records and share tips and experience gained from my side projects.
-				</p>
-			</div>			
-		</div>
-		<footer>
-		</footer>
-	</body>
+<head>
+    <title>hjkode</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <article>
+        <div class="date">February 25, 2018</div>
+        <div class="blurb">
+            <h1>Building boost library for Windows</h1>
+
+            <p>
+                It is supposed to be pretty straightforward. But whenever I needed a specific set of boost libraries it
+                took longer than expected. Basically there are just three
+                steps for building boost library for Windows.<br/>
+
+            <ul class="steps">
+                <li>Step 1: Download a boost library zip file and unzip</li>
+                <li>Step 2: Generate the boost build tool (b2.exe)</li>
+                <li>Step 3: Using the build tool, build a version of boost library</li>
+            </ul>
+
+            <p>
+                <b>Step 1</b>
+                Download boost library from <a href="http://www.boost.org/users/download/">Boost page</a>.<br/>
+                It is a good practice to check the hash value from the boost website. For instance,
+
+            <div class="code">C:\CertUtil -hashfile .\Downloads\boost_1_66_0.zip SHA256</div>
+            </p>
+            <p>
+                <b>Step 2</b>
+                Unzip it and run <b>bootstrap.bat</b> to create the build tool. This will generate <b>b2.exe</b>.
+            </p>
+
+            <p>
+                <b>Step 3</b>
+                Run <b>b2.exe</b> with options to create correct version(s) of boost libraries. Without any
+                option, running <b>b2.exe</b> will generate all variants of boost libraries with default options and
+                this could take a quite long time. Below shows an example of building a 32-bit release version of boost
+                libraries.
+
+            <div class="code">
+                C:\b2 toolset=msvc-14.1 -j4 --build-dir="C:\Users\hjkyod\Documents\dev\boost-build" address-model=32
+                architecture=x86 --build-type=minimal stage --stagedir=stage/win32
+            </div>
+            <div class="explanation">
+                <b>toolset:</b> Compiler version e.g.) msvc-14.1 for Visual Studio 17<br/>
+                <b>-j4:</b> Number cores to run in parallel e.g.) 4<br/>
+                <b>--build-dir:</b> Build directory<br/>
+                <b>address-model: Either 32-bit or 64-bit code generation<br/></b>
+                <b>architecture:<br/></b>
+                <b>--build-type</b>: Determines which build types of the libraries are created. <b>minimal</b> option
+                means
+                release builds.<br/>
+                <b>stage:</b> Request output files to be copied to <b>stage</b> folder<br/>
+                <b>stagedir:</b> Stage folder<br/>
+            </div>
+            <p>
+                For the full list of options, see <a
+                    href="http://www.boost.org/build/doc/html/bbv2/overview/invocation.html">here</a>.
+            </p>
+
+        </div>
+    </article>
+
+
+    <article>
+        <div class="date">February 22, 2018</div>
+        <div class="blurb">
+            <h1>New chapter</h1>
+
+            <p>
+                This is a blog to share tips and knowledge gained from my side projects. I tried this,
+                at least twice in the past and failed. I think those attempts failed because I was putting too much
+                pressure on me, wanting to deliver something <i>creative and big</i>. This time, I will just start small
+                but still try to make it useful.
+            </p>
+        </div>
+    </article>
+</div>
+
+</body>
 </html>
