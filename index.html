@@ -30,9 +30,12 @@
             <p>
                 <b>Step 1</b>
                 Download boost library from <a href="http://www.boost.org/users/download/">Boost page</a>.<br/>
-                It is a good practice to check the hash value from the boost website. For instance,
+                While optional, it is a good practice to check the hash value of the file. For instance, use
+                <b>CertUtil.exe</b> to calculate the hash value of the downloaded zip file and compare it with
+                the one from the boost download page.
 
-            <div class="code">C:\CertUtil -hashfile .\Downloads\boost_1_66_0.zip SHA256</div>
+            <div class="code">C:\Users\hjkode\CertUtil -hashfile .\Downloads\boost_1_66_0.zip SHA256</div>
+
             </p>
             <p>
                 <b>Step 2</b>
@@ -54,11 +57,10 @@
                 <b>toolset:</b> Compiler version e.g.) msvc-14.1 for Visual Studio 17<br/>
                 <b>-j4:</b> Number cores to run in parallel e.g.) 4<br/>
                 <b>--build-dir:</b> Build directory<br/>
-                <b>address-model: Either 32-bit or 64-bit code generation<br/></b>
-                <b>architecture:<br/></b>
+                <b>address-model:</b> Either 32-bit or 64-bit code generation<br/>
+                <b>architecture:</b> Process architecture<br/>
                 <b>--build-type</b>: Determines which build types of the libraries are created. <b>minimal</b> option
-                means
-                release builds.<br/>
+                means release builds.<br/>
                 <b>stage:</b> Request output files to be copied to <b>stage</b> folder<br/>
                 <b>stagedir:</b> Stage folder<br/>
             </div>
@@ -77,10 +79,11 @@
             <h1>New chapter</h1>
 
             <p>
-                This is a blog to share tips and knowledge gained from my side projects. I tried this,
-                at least twice in the past and failed. I think those attempts failed because I was putting too much
-                pressure on me, wanting to deliver something <i>creative and big</i>. This time, I will just start small
-                but still try to make it useful.
+                This is a blog to share tips and knowledge gained from my side projects. I tried something similar,
+                at least twice in the past but it didn't last long. It was perhaps because I was putting too much
+                pressure
+                on me, wanting to deliver something <i>creative and big</i>. This time, I will start small
+                while trying to make this blog useful for me as well as others.
             </p>
         </div>
     </article>
