@@ -11,6 +11,81 @@
     </ul>
 </nav>
 <div class="container">
+
+    <article>
+        <div class="date">February 26, 2018</div>
+        <div class="blurb">
+            <h1>Wow64, SysWoW64 and Wow6432node</h1>
+
+            <p>
+                I found understanding those concepts <i>altogether</i> is more effective for consolidating my understanding (&
+                memorising) than looking at each of them separately.
+            </p>
+
+            <p>
+                <b>WoW64</b><br/>
+                First of all, WoW64 means Windows 32-bit on Windows 64-bit. In MSDN, WOW64 also means the emulator
+                which allows 32-bit applications to run on 64-bit OS.
+            </p>
+
+            <p>
+                <b>SysWow64</b><br/>
+                A 32-bit Windows OS has one Windows system folder named <b>System32</b>. On a 64-bit Windows OS however
+                there are
+                two Windows system folders . <b>System32</b> for 64-bit files and <b>SysWOW64</b> for 32-bit files.
+                Whenever 32-bit
+                applications try to access <b>%windir%\System32</b> it is redirected to <b>%windir%\SysWOW64</b>.
+            </p>
+
+            <p>
+                <b>Wow6432node</b><br/>
+                Similarly, to provide a separate view for a 32-bit application running a 64-bit OS, there is the
+                registry key named <b>Wow6432node</b> under <b>HKEY_LOCAL_MACHINE\Software</b> on a 64-bit
+                Windows OS. This registry key provides a view of <b>HKEY_LOCAL_MACHINE\SOFTWARE</b> for 32-bit
+                applications. (Interestingly the registry key often appears on 32-bit Windows OS. While confusing, you
+                can simply ignore it.)
+            </p>
+
+            <p>
+                While the default access rule says, a 32-bit application running WOW64 (the emulator) accesses the
+                32-bit registry view and a 64-bit application access the 64-bit registry key, you can use the following
+                flags to change the access rule when using them with Windows APIs.
+
+            <table>
+                <tr>
+                    <th>Flag name</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <th>KEY_WOW64_64KEY</th>
+                    <th>Access a 64-bit key from either a 32-bit or 64-bit application</th>
+                </tr>
+                <tr>
+                    <th>KEY_WOW64_32KEY</th>
+                    <th>Access a 32-bit key from either a 32-bit or 64-bit application</th>
+                </tr>
+            </table>
+            </p>
+        </div>
+        <div class="reference">
+            References
+            <ul class="references">
+                <li>
+                    <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa384129(v=vs.85).aspx">MSDN:
+                        Accessing an
+                        Alternate Registry View</a>
+                </li>
+
+                <li>
+                    <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa384187(v=vs.85).aspx">MSDN: File
+                        System Redirector</a>
+                </li>
+            </ul>
+        </div>
+
+    </article>
+
+
     <article>
         <div class="date">February 25, 2018</div>
         <div class="blurb">
@@ -71,8 +146,6 @@
 
         </div>
     </article>
-
-
     <article>
         <div class="date">February 22, 2018</div>
         <div class="blurb">
