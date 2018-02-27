@@ -13,12 +13,49 @@
 <div class="container">
 
     <article>
+        <div class="date">February 28, 2018</div>
+        <div class="blurb">
+            <h1>C++ Regular Expression For File Path</h1>
+
+            <p>
+                How do I turn a file path into a C++ regular expression? Once I had to answer this question to check if
+                a file path is in or under a certain folder.
+            </p>
+
+            <p>
+                In C++ you need two backslashes for '\' in string. In regular expression, '\' is used for special
+                characters. That means, you need four backslash per each '\' in the regular expression to match a C++
+                file path. Because a colon (':') is also a special letter in regular expression you need to add two
+                backslashes in front of it.
+
+                <pre class="code">
+    std::<font color="0xaadede">string</font> myFilePath = <font color="#df4330">"C:\\Program Files\\TestFolder\\MyTestApp.exe"</font>;
+    std::<font color="0xaadede">regex</font> re(<font color="#df4330">"C\\:\\\\Program Files\\\\"</font>, std::regex_constants::icase);
+    std::<font color="0xaadede">smatch</font> matchResult;
+
+    if (std::regex_search(myFilePath, matchResult, re))
+    {
+        // Found a match
+    }
+               </pre>
+            </p>
+            <p>
+                Note <b>std::regex_constants::icase</b> option is passed for case in-sensitive search when creating the
+                regex
+                instance. For case sensitive match, simply omit the second parameter.
+            </p>
+        </div>
+    </article>
+
+    <!--Wow64, SysWow64 and Wow6432node -->
+    <article>
         <div class="date">February 26, 2018</div>
         <div class="blurb">
             <h1>Wow64, SysWoW64 and Wow6432node</h1>
 
             <p>
-                I found understanding those concepts <i>altogether</i> is more effective for consolidating my understanding (&
+                I found understanding those concepts <i>altogether</i> is more effective for consolidating my
+                understanding (&
                 memorising) than looking at each of them separately.
             </p>
 
@@ -84,8 +121,7 @@
         </div>
 
     </article>
-
-
+    <!--Building Boost Library For Windows-->
     <article>
         <div class="date">February 25, 2018</div>
         <div class="blurb">
@@ -146,6 +182,7 @@
 
         </div>
     </article>
+    <!--New Chapter-->
     <article>
         <div class="date">February 22, 2018</div>
         <div class="blurb">
