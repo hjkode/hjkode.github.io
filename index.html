@@ -12,6 +12,60 @@
 </nav>
 <div class="container">
 
+    <!-- C++ _countof vs sizeof -->
+    <article>
+        <div class="date">March 2, 2018</div>
+        <div class="blurb">
+            <h1>C++ _countof vs sizeof </h1>
+
+            <p>
+                <b>_countof</b> is a macro that computes the number of elements in an array. That task sounds quite easy with
+                <b>sizeof</b>, so why should I bother using another macro, I thought for a moment (only for a moment).
+            </p>
+
+            <p>Firstly, using <b>_countof</b> is semantically clearer than <b>sizeof</b> if the intention of the logic is getting the number
+                of elements rather than the size of an array. Secondly, using sizeof for computing the element counts
+                could be sometimes confusing thus buggy. See the below example. Can you expect the correct output?
+                (Answer in the comment)
+            </p>
+
+            <p>
+                <pre class="code">
+    #include &lt;iostream&gt;
+
+    <font color="blue">class</font> Foo {
+    <font color="blue">public</font>:
+        Foo() {}
+        Foo(int data, char charData) : numData_(data), charData_(charData) {}
+    <font color="blue">private</font>:
+        int numData_;
+        char charData_;
+    };
+
+    <font color="blue">int</font> main(<font color="blue">int</font> argc, <font color="blue">char </font>*argv[])
+    {
+        <font color="blue">char</font> charArray[16];
+        <font color="blue">wchar_t </font>wcharArray[16];
+        Foo fooArray[16];
+        Foo* fooPtrArray[16];
+
+        std::cout << <font color="purple">_countof</font>(charArray) << ", " << <font color="blue">sizeof</font>(charArray) << std::endl;     // 16, 16
+        std::cout << <font color="purple">_countof</font>(wcharArray) << ", " << <font color="blue">sizeof</font>(wcharArray) << std::endl;   // 16, 32
+        std::cout << <font color="purple">_countof</font>(fooArray) << ", " << <font color="blue">sizeof</font>(fooArray) << std::endl;       // 16, 128
+        std::cout << <font color="purple">_countof</font>(fooPtrArray) << ", " << <font color="blue">sizeof</font>(fooPtrArray) << std::endl; // 16, 64 (x86) and 16, 128 (x64)
+
+        <font color="blue">return</font> 0;
+    }
+               </pre>
+            </p>
+            <p>
+                It's actually not too difficult to get the correct answer. But it also seems quite easy to make a
+                mistake when using with sizeof for computing the number of elements of an array.
+            </p>
+        </div>
+    </article>
+
+    <!-- C++ Regular Expression For File Path -->
     <article>
         <div class="date">February 28, 2018</div>
         <div class="blurb">
@@ -46,7 +100,6 @@
             </p>
         </div>
     </article>
-
     <!--Wow64, SysWow64 and Wow6432node -->
     <article>
         <div class="date">February 26, 2018</div>
