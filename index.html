@@ -24,7 +24,7 @@
             </p>
 
             <p>Firstly, using <b>_countof</b> is semantically clearer than <b>sizeof</b> if the intention of the logic is getting the number
-                of elements rather than the size of an array. Secondly, using sizeof for computing the element counts
+                of elements rather than the size of an array. Secondly, using <b>sizeof</b> for computing the element counts
                 could be sometimes confusing thus buggy. See the below example. Can you expect the correct output?
                 (Answer in the comment)
             </p>
@@ -38,8 +38,8 @@
         Foo() {}
         Foo(int data, char charData) : numData_(data), charData_(charData) {}
     <font color="blue">private</font>:
-        int numData_;
-        char charData_;
+        <font color="blue">int</font> numData_;
+        <font color="blue">char</font> charData_;
     };
 
     <font color="blue">int</font> main(<font color="blue">int</font> argc, <font color="blue">char </font>*argv[])
@@ -49,10 +49,10 @@
         Foo fooArray[16];
         Foo* fooPtrArray[16];
 
-        std::cout << <font color="purple">_countof</font>(charArray) << ", " << <font color="blue">sizeof</font>(charArray) << std::endl;     // 16, 16
-        std::cout << <font color="purple">_countof</font>(wcharArray) << ", " << <font color="blue">sizeof</font>(wcharArray) << std::endl;   // 16, 32
-        std::cout << <font color="purple">_countof</font>(fooArray) << ", " << <font color="blue">sizeof</font>(fooArray) << std::endl;       // 16, 128
-        std::cout << <font color="purple">_countof</font>(fooPtrArray) << ", " << <font color="blue">sizeof</font>(fooPtrArray) << std::endl; // 16, 64 (x86) and 16, 128 (x64)
+        std::cout << <font color="purple">_countof</font>(charArray) << ", " << <font color="blue">sizeof</font>(charArray) << std::endl;     <font color="#008600">// 16, 16</font>
+        std::cout << <font color="purple">_countof</font>(wcharArray) << ", " << <font color="blue">sizeof</font>(wcharArray) << std::endl;   <font color="008600">// 16, 32</font>
+        std::cout << <font color="purple">_countof</font>(fooArray) << ", " << <font color="blue">sizeof</font>(fooArray) << std::endl;       <font color="008600">// 16, 128</font>
+        std::cout << <font color="purple">_countof</font>(fooPtrArray) << ", " << <font color="blue">sizeof</font>(fooPtrArray) << std::endl; <font color="008600">// 16, 64 (x86) and 16, 128 (x64)</font>
 
         <font color="blue">return</font> 0;
     }
@@ -60,7 +60,7 @@
             </p>
             <p>
                 It's actually not too difficult to get the correct answer. But it also seems quite easy to make a
-                mistake when using with sizeof for computing the number of elements of an array.
+                mistake when using with <b>sizeof</b> for computing the number of elements of an array.
             </p>
         </div>
     </article>
