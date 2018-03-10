@@ -12,6 +12,130 @@
 </nav>
 <div class="container">
 
+    <!-- Some Git commands at work (today)-->
+    <article>
+        <div class="date">March 9, 2018</div>
+        <div class="blurb">
+            <h1>Some Git commands at work (today)</h1>
+
+            <p>
+                If you don't have experience with Git at work, the following Git commands might give you an idea what
+                you will be doing with Git on a normal working day. :)
+            </p>
+
+            <p>
+                Setting user name and email globally
+
+            <div class="code">
+                <b>git config --global user.name</b> "John Doe"<br/>
+                <b>git config --global user.email</b> "johndoe20000@foo.com"
+            </div>
+
+            <p>Cloning a remote repository
+                <div class="code">
+            <b>git clone </b>remote-repository
+        </div>
+            </p>
+
+            <p>
+                Creating and checking out a branch
+
+            <div class="code">
+                <b>git checkout -b</b> new-branch-name
+            </div>
+            </p>
+            <p>
+                Deleting branches
+
+            <div class="code">
+                <b>git branch -d</b> branch-name-to-be-deleted <br/>
+                <b>git push origin --delete</b> remote-branch-name-to-be-deleted
+            </div>
+
+            </p>
+
+            </p>
+
+            <p>
+                Comparing changes
+
+            <div class="code">
+                <b>git diff</b>  => diff unstaged files <br/>
+                <b>git show</b>  => diff with last commit
+            </div>
+
+            </p>
+            <p>
+                Undoing uncommitted changes locally
+
+            <div class="code">
+                <b>git checkout -- .</b> => revert all files<br/>
+                <b>git checkout -- </b>file-name-to-undo => revert a specific file
+            </div>
+
+            </p>
+
+            <p>
+                Displaying commit and branching history
+
+            <div class="code">
+                <b>git log --graph</b>
+            </div>
+
+            </p>
+
+            <p>
+                Storing and re-applying changes
+
+            <div class="code">
+                <b>git stash</b><br/>
+                <b>git stash pop</b>
+            </div>
+
+            </p>
+
+            <p>
+                Unstaging files
+
+            <div class="code">
+                <b>git reset</b> staged-file-name
+            </div>
+
+            </p>
+
+            <p>
+                Displaying local and remote branches
+
+            <div class="code">
+                <b>git branch -v</b> <br/>
+                <b>git remote -v</b>
+            </div>
+
+            </p>
+
+            <p>
+                Deleting untracked files
+
+            <div class="code">
+                <b>git clean -f</b> => delete files<br/>
+                <B>git clean -n </B>=> display files that will be deleted<br/>
+                <B>git clean -f -d</B> => delete directories
+            </div>
+
+            </p>
+
+            <p>
+                Tidying commit history (local)
+
+            <div class="code">
+                <b>git rebase -i</b> hash-value-to-which-rebase
+            </div>
+            </p>
+        </div>
+    </article>
+
+
+
     <!-- C++ _countof vs sizeof -->
     <article>
         <div class="date">March 2, 2018</div>
