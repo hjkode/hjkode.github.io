@@ -12,6 +12,69 @@
 </nav>
 <div class="container">
 
+    <!-- Python ModuleNotFoundError-->
+    <article>
+        <div class="date">March 19, 2018</div>
+        <div class="blurb">
+            <h1>Python ModuleNotFoundError</h1>
+
+            <p>
+                While I instantly began to like using Python for a new project, I often had to scratch my head why I was
+                getting <b>ModuleNotFoundError</b> error when everything looked okay. (Of course there was a problem or two) This is
+                a list of debugging tips which I found useful to sort out the problem.
+            </p>
+
+            <p>
+                0. Have you installed your package? (For Python newbies) Just putting <b>__init__.py</b> every folder in
+                your project does not magically make one script file to understand another script file somewhere. You need to
+                install your package first. Below will <i>install </i>the package, meaning the information about the
+                package will be known to
+                Python.
+
+            <div class="code">
+                pip install package_name
+            </div>
+
+            </p>
+
+            <p>
+                1. Check spelling typo. This sounds silly but happens. Check the package name to be imported.
+            </p>
+
+            <p>
+                2. Check <b>__init__.py</b> in the wrong place. As missing the file causes a problem in importing,
+                putting it
+                in the unintended folder (in my case it was the top project folder) also can cause an importing error
+                because it will change the required importing path.
+            </p>
+
+            <p>
+                3. Print <b>sys.path</b> to see paths Python searches for. Is your project included in those paths?
+
+        </pre>
+            </p>
+
+            <div class="reference">
+                Some useful reading
+                <ul class="references">
+                    <li>
+                        <a href="https://python-packaging.readthedocs.io/en/latest/">How To Package Your Python Code</a>
+                    </li>
+
+                    <li>
+                        <a href="https://pythonhosted.org/an_example_pypi_project/setuptools.html">Getting Started With setuptools and setup.py</a>
+                    </li>
+
+                    <li>
+                        <a href="https://docs.python.org/3/reference/import.html">The import system</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </article>
+
+
     <!-- Some Git commands at work (today)-->
     <article>
         <div class="date">March 9, 2018</div>
@@ -133,8 +196,6 @@
             </p>
         </div>
     </article>
-
-
 
     <!-- C++ _countof vs sizeof -->
     <article>
