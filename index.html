@@ -11,6 +11,42 @@
     </ul>
 </nav>
 <div class="container">
+    <!-- Running a simple daemon on Windows with Python-->
+    <article>
+        <div class="date">March 30, 2018</div>
+        <div class="blurb">
+            <h1>Running a simple daemon on Windows with Python</h1>
+
+            <p>
+                Prepare a Python script running a loop which performs periodic tasks such as checking Windows event
+                store for a specific type of events or monitoring a folder if there is a new file dropped.
+            </p>
+
+            <p>
+                To run the script as a background process, you can use Windows scheduled tasks. The following Windows
+                commands will create (and override already existing one) a new task named <b>MyPythonDaemon</b> from <b>C:\Exp\daemon.py</b>.
+
+            <div class="code">
+                <b>schtasks</b> /Create /TN MyPythonDaemon /SC onstart /F /RU system /TR
+                "'C:\Users\hjkode\AppData\Local\Programs\Python\Python36-32\python.exe' 'C:\Exp\daemon.py'"<br/>
+                <b>schtasks</b> /Run /TN MyPythonDaemon
+            </div>
+            </p>
+            <p>
+                Note that /TR (taskrun) value has been group in "" and its members are wrapped in '' each.
+            </p>
+
+            <div class="reference">
+                Reference
+                <ul class="references">
+                    <li>
+                        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb736357(v=vs.85).aspx">MSDN: Schtasks.exe</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </article>
 
     <!-- Python ModuleNotFoundError-->
     <article>
