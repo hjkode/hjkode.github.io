@@ -24,7 +24,7 @@
 
             <p>
                 To run the script as a background process, you can use Windows scheduled tasks. The following Windows
-                commands will create (and override already existing one) a new task named <b>MyPythonDaemon</b> from <b>C:\Exp\daemon.py</b>.
+                commands will create (and override already existing one) and run a new task named <b>MyPythonDaemon</b> from <b>C:\Exp\daemon.py</b>.
 
             <div class="code">
                 <b>schtasks</b> /Create /TN MyPythonDaemon /SC onstart /F /RU system /TR
@@ -33,7 +33,7 @@
             </div>
             </p>
             <p>
-                Note that /TR (taskrun) value has been group in "" and its members are wrapped in '' each.
+                Note that /TR (taskrun) value has been grouped in "" and its members are wrapped in '' each.
             </p>
 
             <div class="reference">
