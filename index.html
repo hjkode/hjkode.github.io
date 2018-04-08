@@ -11,6 +11,81 @@
     </ul>
 </nav>
 <div class="container">
+
+    <!-- Supporting Python CLI-->
+    <article>
+        <div class="date">April 8, 2018</div>
+        <div class="blurb">
+            <h1>Supporting Python CLI</h1>
+
+            <p>
+                Here is a concise (hopefully) example showing how to make a Python package and run it like an executable file on the
+                command line using '<b>entry_points</b>' from <b>setuptools</b>. In this example, I deliberately used different names
+                for files and '<b>console_scripts</b>' to make it clear which name is for what.
+            </p>
+
+            <p>
+                Once you have installed the example using '<b>pip install -e .</b>', you can run it on the command line by
+                using the name described in '<b>console_scripts</b>'. e.g.) C:\hjkode
+            </p>
+
+            <p>
+            <i>Project folder structure</i>
+            <pre class="code">
+    my_project_package
+        my_project
+            __init__.py
+            __main__.py
+        setup.py
+        </pre>
+            </p>
+
+            <p>
+                <i>__main__.py</i>
+                <pre class="code">
+    def main():
+        print("Running the main routine")
+        # Do something interesting!
+        # Use argparse to support CLI commands
+
+    if __name__ == "__main__":
+        main()
+        </pre>
+            </p>
+
+            <p>
+                <i>setup.py</i>
+                <pre class="code">
+    from setuptools import setup
+
+    setup(name='hjkode-project',   # [Mandatory] This is the name you get from running 'pip list'
+          version='0.1.0',         # [Mandatory]
+          packages=['my_project'], # [Mandatory] Source code location
+          entry_points={           # Use this to run the module on the command line after installation. e.g) C:\hjkode
+              'console_scripts': [
+                  'hjkode = my_project.__main__:main'
+              ]
+          },
+          )
+        </pre>
+            </p>
+
+            <div class="reference">
+                References
+                <ul class="references">
+                    <li>
+                        <a href="https://python-packaging.readthedocs.io/en/latest/">How to Package Your Python Code</a>
+                    </li>
+                    <li>
+                        <a href="https://chriswarrick.com/blog/2014/09/15/python-apps-the-right-way-entry_points-and-scripts/">Python
+                            Apps the Right Way: Entry points and scripts</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </article>
+
     <!-- Running a simple daemon on Windows with Python-->
     <article>
         <div class="date">March 30, 2018</div>
