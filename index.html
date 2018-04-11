@@ -12,6 +12,68 @@
 </nav>
 <div class="container">
 
+    <!-- Python: Simple argparse example -->
+    <article>
+        <div class="date">April 11, 2018</div>
+        <div class="blurb">
+            <h1>Python: Simple argparse example</h1>
+
+            <p>
+                This is a trivial <b>argparse</b> example showing how to take one positional (thus, mandatory) input
+                and one optional argument. Let's imagine you are writing a code-to-html converter (well, <b>Pygments</b>
+                is
+                there for you just in case you are about to write one). It must take one mandatory input which is the
+                file from which it converts and one option for language in which the code is written.
+            </p>
+
+            <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="c1"># Usage example</span>
+<span class="c1">#</span>
+<span class="c1"># C:\code2html -h</span>
+<span class="c1"># C:\code2html mycode.py --lang python</span>
+<span class="c1"># C:\code2html mycode.cpp</span>
+<span class="c1"># C:\code2html =&gt; cod2html: error: the following arguments are required: input_file</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span
+                        class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span
+                        class="o">=</span><span
+                        class="s1">&#39;Simple parser running understanding two options&#39;</span><span
+                        class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span
+                        class="p">(</span><span class="s1">&#39;input_file&#39;</span><span class="p">,</span> <span
+                        class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span
+                        class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The code file to convert to HTML&#39;</span><span
+                        class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span
+                        class="p">(</span><span class="s1">&#39;-l&#39;</span><span class="p">,</span> <span class="s1">&#39;--lang&#39;</span><span
+                        class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store&#39;</span><span
+                        class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;C++&#39;</span><span
+                        class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;lang&#39;</span><span
+                        class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Choose the language of the code to convert to HTML. Default is C++&#39;</span><span
+                        class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span
+                        class="n">parse_args</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span
+                        class="n">input_file</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span
+                        class="n">lang</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span
+                        class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre>
+            </div>
+
+        </div>
+    </article>
+
+
     <!-- Supporting Python CLI-->
     <article>
         <div class="date">April 8, 2018</div>
@@ -19,18 +81,21 @@
             <h1>Supporting Python CLI</h1>
 
             <p>
-                Here is a concise (hopefully) example showing how to make a Python package and run it like an executable file on the
-                command line using '<b>entry_points</b>' from <b>setuptools</b>. In this example, I deliberately used different names
+                Here is a concise (hopefully) example showing how to make a Python package and run it like an executable
+                file on the
+                command line using '<b>entry_points</b>' from <b>setuptools</b>. In this example, I deliberately used
+                different names
                 for files and '<b>console_scripts</b>' to make it clear which name is for what.
             </p>
 
             <p>
-                Once you have installed the example using '<b>pip install -e .</b>', you can run it on the command line by
+                Once you have installed the example using '<b>pip install -e .</b>', you can run it on the command line
+                by
                 using the name described in '<b>console_scripts</b>'. e.g.) C:\hjkode
             </p>
 
             <p>
-            <i>Project folder structure</i>
+                <i>Project folder structure</i>
             <pre class="code">
     my_project_package
         my_project
@@ -42,32 +107,43 @@
 
             <p>
                 <i>__main__.py</i>
-                <pre class="code">
-    def main():
-        print("Running the main routine")
-        # Do something interesting!
-        # Use argparse to support CLI commands
 
-    if __name__ == "__main__":
-        main()
-        </pre>
+            <div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">main</span><span
+                    class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Running the main routine&quot;</span><span
+                        class="p">)</span>
+        <span class="c1"># Do something interesting!</span>
+        <span class="c1"># Use argparse to support CLI commands</span>
+
+    <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span
+                        class="p">:</span>
+        <span class="n">main</span><span class="p">()</span>
+</pre>
+            </div>
             </p>
 
             <p>
                 <i>setup.py</i>
-                <pre class="code">
-    from setuptools import setup
 
-    setup(name='hjkode-project',   # [Mandatory] This is the name you get from running 'pip list'
-          version='0.1.0',         # [Mandatory]
-          packages=['my_project'], # [Mandatory] Source code location
-          entry_points={           # Use this to run the module on the command line after installation. e.g) C:\hjkode
-              'console_scripts': [
-                  'hjkode = my_project.__main__:main'
-              ]
-          },
-          )
-        </pre>
+            <div class="highlight"><pre>
+    <span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span
+                    class="n">setup</span>
+
+    <span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span
+                    class="s1">&#39;hjkode-project&#39;</span><span class="p">,</span>   <span class="c1"># [Mandatory] This is the name you get from running &#39;pip list&#39;</span>
+          <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.1.0&#39;</span><span
+                    class="p">,</span>         <span class="c1"># [Mandatory]</span>
+          <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;my_project&#39;</span><span
+                    class="p">],</span> <span class="c1"># [Mandatory] Source code location</span>
+          <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>           <span
+                    class="c1"># Use this to run the module on the command line after installation. e.g) C:\hjkode</span>
+              <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="s1">&#39;hjkode = my_project.__main__:main&#39;</span>
+              <span class="p">]</span>
+          <span class="p">},</span>
+          <span class="p">)</span>
+</pre>
+            </div>
             </p>
 
             <div class="reference">
@@ -99,7 +175,8 @@
 
             <p>
                 To run the script as a background process, you can use Windows scheduled tasks. The following Windows
-                commands will create (and override already existing one) and run a new task named <b>MyPythonDaemon</b> from <b>C:\Exp\daemon.py</b>.
+                commands will create (and override already existing one) and run a new task named <b>MyPythonDaemon</b>
+                from <b>C:\Exp\daemon.py</b>.
 
             <div class="code">
                 <b>schtasks</b> /Create /TN MyPythonDaemon /SC onstart /F /RU system /TR
@@ -115,7 +192,8 @@
                 Reference
                 <ul class="references">
                     <li>
-                        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb736357(v=vs.85).aspx">MSDN: Schtasks.exe</a>
+                        <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/bb736357(v=vs.85).aspx">MSDN:
+                            Schtasks.exe</a>
                     </li>
                 </ul>
             </div>
@@ -131,13 +209,15 @@
 
             <p>
                 While I instantly began to like using Python for a new project, I often had to scratch my head why I was
-                getting <b>ModuleNotFoundError</b> error when everything looked okay. (Of course there was a problem or two) This is
+                getting <b>ModuleNotFoundError</b> error when everything looked okay. (Of course there was a problem or
+                two) This is
                 a list of debugging tips which I found useful to sort out the problem.
             </p>
 
             <p>
                 0. Have you installed your package? (For Python newbies) Just putting <b>__init__.py</b> every folder in
-                your project does not magically make one script file to understand another script file somewhere. You need to
+                your project does not magically make one script file to understand another script file somewhere. You
+                need to
                 install your package first. Below will <i>install </i>the package, meaning the information about the
                 package will be known to
                 Python.
@@ -162,7 +242,7 @@
             <p>
                 3. Print <b>sys.path</b> to see paths Python searches for. Is your project included in those paths?
 
-        </pre>
+                </pre>
             </p>
 
             <div class="reference">
@@ -173,7 +253,8 @@
                     </li>
 
                     <li>
-                        <a href="https://pythonhosted.org/an_example_pypi_project/setuptools.html">Getting Started With setuptools and setup.py</a>
+                        <a href="https://pythonhosted.org/an_example_pypi_project/setuptools.html">Getting Started With
+                            setuptools and setup.py</a>
                     </li>
 
                     <li>
@@ -206,9 +287,10 @@
             </div>
 
             <p>Cloning a remote repository
-                <div class="code">
-            <b>git clone </b>remote-repository
-        </div>
+
+            <div class="code">
+                <b>git clone </b>remote-repository
+            </div>
             </p>
 
             <p>
@@ -234,8 +316,8 @@
                 Comparing changes
 
             <div class="code">
-                <b>git diff</b>  => diff unstaged files <br/>
-                <b>git show</b>  => diff with last commit
+                <b>git diff</b> => diff unstaged files <br/>
+                <b>git show</b> => diff with last commit
             </div>
 
             </p>
@@ -315,44 +397,81 @@
             <h1>C++ _countof vs sizeof </h1>
 
             <p>
-                <b>_countof</b> is a macro that computes the number of elements in an array. That task sounds quite easy with
+                <b>_countof</b> is a macro that computes the number of elements in an array. That task sounds quite easy
+                with
                 <b>sizeof</b>, so why should I bother using another macro, I thought for a moment (only for a moment).
             </p>
 
-            <p>Firstly, using <b>_countof</b> is semantically clearer than <b>sizeof</b> if the intention of the logic is getting the number
-                of elements rather than the size of an array. Secondly, using <b>sizeof</b> for computing the element counts
+            <p>Firstly, using <b>_countof</b> is semantically clearer than <b>sizeof</b> if the intention of the logic
+                is getting the number
+                of elements rather than the size of an array. Secondly, using <b>sizeof</b> for computing the element
+                counts
                 could be sometimes confusing thus buggy. See the below example. Can you expect the correct output?
                 (Answer in the comment)
             </p>
 
             <p>
-                <pre class="code">
-    #include &lt;iostream&gt;
 
-    <font color="blue">class</font> Foo {
-    <font color="blue">public</font>:
-        Foo() {}
-        Foo(int data, char charData) : numData_(data), charData_(charData) {}
-    <font color="blue">private</font>:
-        <font color="blue">int</font> numData_;
-        <font color="blue">char</font> charData_;
-    };
+            <div class="highlight"><pre><span></span><span class="cp">#include</span> <span
+                    class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
-    <font color="blue">int</font> main(<font color="blue">int</font> argc, <font color="blue">char </font>*argv[])
-    {
-        <font color="blue">char</font> charArray[16];
-        <font color="blue">wchar_t </font>wcharArray[16];
-        Foo fooArray[16];
-        Foo* fooPtrArray[16];
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">Foo</span><span class="p">()</span> <span class="p">{}</span>
+	<span class="n">Foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">data</span><span
+                        class="p">,</span> <span class="kt">char</span> <span class="n">charData</span><span
+                        class="p">)</span> <span class="o">:</span> <span class="n">numData_</span><span
+                        class="p">(</span><span class="n">data</span><span class="p">),</span> <span
+                        class="n">charData_</span><span class="p">(</span><span class="n">charData</span><span
+                        class="p">)</span> <span class="p">{}</span>
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">numData_</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">charData_</span><span class="p">;</span>
+<span class="p">};</span>
 
-        std::cout << <font color="purple">_countof</font>(charArray) << ", " << <font color="blue">sizeof</font>(charArray) << std::endl;     <font color="#008600">// 16, 16</font>
-        std::cout << <font color="purple">_countof</font>(wcharArray) << ", " << <font color="blue">sizeof</font>(wcharArray) << std::endl;   <font color="008600">// 16, 32</font>
-        std::cout << <font color="purple">_countof</font>(fooArray) << ", " << <font color="blue">sizeof</font>(fooArray) << std::endl;       <font color="008600">// 16, 128</font>
-        std::cout << <font color="purple">_countof</font>(fooPtrArray) << ", " << <font color="blue">sizeof</font>(fooPtrArray) << std::endl; <font color="008600">// 16, 64 (x86) and 16, 128 (x64)</font>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span
+                        class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span
+                        class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+	<span class="kt">char</span> <span class="n">charArray</span><span class="p">[</span><span class="mi">16</span><span
+                        class="p">];</span>
+	<span class="kt">wchar_t</span> <span class="n">wcharArray</span><span class="p">[</span><span
+                        class="mi">16</span><span class="p">];</span>
+	<span class="n">Foo</span> <span class="n">fooArray</span><span class="p">[</span><span class="mi">16</span><span
+                        class="p">];</span>
+	<span class="n">Foo</span><span class="o">*</span> <span class="n">fooPtrArray</span><span class="p">[</span><span
+                        class="mi">16</span><span class="p">];</span>
 
-        <font color="blue">return</font> 0;
-    }
-               </pre>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span
+                        class="n">_countof</span><span class="p">(</span><span class="n">charArray</span><span
+                        class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span
+                        class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">charArray</span><span
+                        class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span
+                        class="o">::</span><span class="n">endl</span><span class="p">;</span>     <span class="c1">// 16, 16</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span
+                        class="n">_countof</span><span class="p">(</span><span class="n">wcharArray</span><span
+                        class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span
+                        class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">wcharArray</span><span
+                        class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span
+                        class="o">::</span><span class="n">endl</span><span class="p">;</span>   <span class="c1">// 16, 32</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span
+                        class="n">_countof</span><span class="p">(</span><span class="n">fooArray</span><span class="p">)</span> <span
+                        class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span
+                        class="k">sizeof</span><span class="p">(</span><span class="n">fooArray</span><span
+                        class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span
+                        class="o">::</span><span class="n">endl</span><span class="p">;</span>       <span class="c1">// 16, 128</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span
+                        class="n">_countof</span><span class="p">(</span><span class="n">fooPtrArray</span><span
+                        class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span
+                        class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">fooPtrArray</span><span
+                        class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span
+                        class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 16, 64 (x86) and 16, 128 (x64)</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre>
+            </div>
             </p>
             <p>
                 It's actually not too difficult to get the correct answer. But it also seems quite easy to make a
@@ -378,16 +497,27 @@
                 file path. Because a colon (':') is also a special letter in regular expression you need to add two
                 backslashes in front of it.
 
-                <pre class="code">
-    std::<font color="0xaadede">string</font> myFilePath = <font color="#df4330">"C:\\Program Files\\TestFolder\\MyTestApp.exe"</font>;
-    std::<font color="0xaadede">regex</font> re(<font color="#df4330">"C\\:\\\\Program Files\\\\"</font>, std::regex_constants::icase);
-    std::<font color="0xaadede">smatch</font> matchResult;
+            <div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span
+                    class="n">myFilePath</span> <span class="o">=</span> <span class="s">&quot;C:</span><span
+                    class="se">\\</span><span class="s">Program Files</span><span class="se">\\</span><span class="s">TestFolder</span><span
+                    class="se">\\</span><span class="s">MyTestApp.exe&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">regex</span> <span class="n">re</span><span
+                        class="p">(</span><span class="s">&quot;C</span><span class="se">\\</span><span
+                        class="s">:</span><span class="se">\\\\</span><span class="s">Program Files</span><span
+                        class="se">\\\\</span><span class="s">&quot;</span><span class="p">,</span> <span
+                        class="n">std</span><span class="o">::</span><span class="n">regex_constants</span><span
+                        class="o">::</span><span class="n">icase</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">smatch</span> <span class="n">matchResult</span><span
+                        class="p">;</span>
 
-    if (std::regex_search(myFilePath, matchResult, re))
-    {
-        // Found a match
-    }
-               </pre>
+<span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">regex_search</span><span
+                        class="p">(</span><span class="n">myFilePath</span><span class="p">,</span> <span class="n">matchResult</span><span
+                        class="p">,</span> <span class="n">re</span><span class="p">))</span>
+<span class="p">{</span>
+	<span class="c1">// Found a match</span>
+<span class="p">}</span>
+</pre>
+            </div>
             </p>
             <p>
                 Note <b>std::regex_constants::icase</b> option is passed for case in-sensitive search when creating the
