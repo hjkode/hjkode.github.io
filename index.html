@@ -12,6 +12,66 @@
 </nav>
 <div class="container">
 
+    <article>
+        <div class="date">Apr 16, 2018</div>
+        <div class="blurb">
+            <h1>Running Ubuntu on Windows with VirtualBox</h1>
+
+            <p>
+                Why VirtualBox? Because it works well, it is easy to use and free. I think it's more than enough for
+                personal use. Here is a brief summary of how to install Ubuntu on Windows using VirutalBox.
+            </p>
+
+            <p>
+                <b>Steps</b>
+            <ul class="steps">
+                <li>Step 1: Download and install VirtualBox from <a href="https://www.virtualbox.org/">VirtualBox</a>
+                </li>
+                <br/>
+                <li>Step 2: Download Ubuntu Desktop from <a href="https://www.ubuntu.com">Ubuntu</a></li>
+                <br/>
+                <li>Step 3: Creating a Ubuntu VM
+                    <ul>
+                        <li>3.1: Create a new machine using <b>New</b>. Choose <b>Linux</b> type and <b>Ubuntu</b>
+                            version.
+                        </li>
+                        <li>3.2: Proceed with default options.</li>
+                        <li>3.3: From <b>Machine Tools</b>, select <b>Details</b>.</li>
+                        <li>3.4: Go to <b>Storage</b>.</li>
+                        <li>3.5: Select Empty disk symbol under <b>Storage Devices</b>.</li>
+                        <li>3.6: Click the disk symbol next to <b>Optical Drive</b> under <b>Attributes</b> then select
+                            the Ubuntu iso file.
+                        </li>
+                        <li>3.7: Start the VM and follow installation steps.</li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Step 4: Configuring the VM. Without this, it may perform too sluggish.
+                    <ul>
+                        <li>4.1: Click <b>System</b> from <b>Machine Tools </b>in VirtualBox Manager</li>
+                        <li>4.2: Increase the base memory to 4GB (or higher)</li>
+                        <li>4.3: Set 4 processors under the <b>Processor</b> tab</li>
+                        <li>4.4: Under <b>Display</b> tick <b>Enable 3D Acceleration</b> and adjust <b>Video Memory</b>
+                            to 128MB.
+                        </li>
+                    </ul>
+                </li>
+                <br/>
+                <li>
+                    Step 5: Run <b>VBox_GAs</b> (VirtualBox Guest Additions) in Ubuntu. These are device drivers and for system
+                    optimization. In the Ubuntu main screen, open the disk symbol on the left side then click <b>Run
+                    Software</b>.
+                </li>
+            </ul>
+            </p>
+            <p>
+                Lastly, it might be a good idea to make a <i>base</i> snapshot before using the VM. That's it!
+            </p>
+
+        </div>
+    </article>
+
     <!-- Python: Simple sub-parser example-->
     <article>
         <div class="date">April 13, 2018</div>
@@ -167,7 +227,6 @@
 
         </div>
     </article>
-
 
     <!-- Supporting Python CLI-->
     <article>
