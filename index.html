@@ -362,11 +362,10 @@
                     <b>MyPythonDaemon</b>
                     from <b>C:\Exp\daemon.py</b>.
 
-                <div class="code">
-                    <b>schtasks</b> /Create /TN MyPythonDaemon /SC onstart /F /RU system /TR
-                    "'C:\Users\hjkode\AppData\Local\Programs\Python\Python36-32\python.exe' 'C:\Exp\daemon.py'"<br/>
-                    <b>schtasks</b> /Run /TN MyPythonDaemon
-                </div>
+                <pre class="code">
+<b>schtasks</b> /Create /TN MyPythonDaemon /SC onstart /F /RU system /TR "'C:\Users\hjkode\AppData\Local\Programs\Python\Python36-32\python.exe' 'C:\Exp\daemon.py'"
+<b>schtasks</b> /Run /TN MyPythonDaemon
+                </pre>
                 </p>
                 <p>
                     Note that /TR (taskrun) value has been grouped in "" and its members are wrapped in '' each.
