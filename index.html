@@ -3,16 +3,101 @@
 <head>
     <title>Simple Code</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <div class="simple">"Let's not make simple things complex..!"</div>
+    <div class="simple">"Let's keep simple things simple"</div>
 </head>
 <body>
 <main class="container">
 
     <article>
+        <header>
+            <h1>Python: Using Virtual Environment</h1>
+            <div class="date">July 19, 2018</div>
+        </header>
+        <div class="rborder">
+            <div>
+                <p>
+                    When working on Python projects, it is common to have problems caused by a mis-match between
+                    installed packages or wrong versions of packages. Using Python virtual environment can easily solve
+                    this problem.</p>
+                <p>
+                    Since each virtual environment is totally isolated from others, installing whatever version of
+                    packages in one environment or even deleting the environment won't affect other environments.
+                </p>
+
+                <p>
+                    Firstly, install virtualenv if it is not installed.
+                <div class="code">
+                    pip install virtualenv
+                </div>
+                </p>
+                <p>
+                    Go to the project folder you want to use a virtual environment then create a new
+                    virtual environment. Here, we are creating one named <b>myenv</b>.
+                <div class="code">
+                    jj@jj-ubuntu:~g/myprject$ <b>virtualenv myenv</b>
+                </div>
+                </p>
+                <p>
+                    Now you need to activate it by using source command.
+                    <div class="code">
+                        jj@jj-ubuntu:~g/myprject$ <b>. myenv/bin/activate</b>
+                    </div>
+                </p>
+                <p>
+                    To stop using the virtual environment, simply run deactivate.
+                    <div class="code">
+                        jj@jj-ubuntu:~g/myprject$ <b>deactivate</b>
+                    </div>
+                </p>
+
+            </div>
+        </div>
+
+    </article>
+
+    <article>
+        <header>
+            <h1>Python: Basics of requirements.txt</h1>
+            <div class="date">June 8, 2018</div>
+        </header>
+        <div class="rborder">
+            <div>
+                <p>
+                    This short post explains the (very) basic of <b>requirements.txt.</b>
+                </p>
+
+                <p>
+                    One way to manage project dependencies is using a file named 'requirements.txt'. It basically
+                    contains a list of packages to install. How to use it?
+                    <div class="code">
+                        pip install -r requirements.txt
+                    </div>
+                </p>
+                <p>
+                    In requirements file(s), you also can specify the version of those packages. For instance,
+                    <div class="code">
+                    NiceFramework == 0.1.2<br/>
+                    AnotherLibrary >= 0.2.2
+                    </div>
+                </p>
+                <p>
+                    Another good thing about requirement files is that it is also supported by Pycharm which is a great
+                    Python IDE (& free for Community version). Simply add 'requirements.txt' to the project. If Pycharm
+                    finds packages in the list are not satisfied, it will let you know and give you an option to install
+                    them.
+
+                </p>
+
+            </div>
+        </div>
+
+    </article>
+
+    <article>
         <div class="rborder">
             <div class="date">May 9, 2018</div>
             <div>
-                <h1>Useful Resources About Certificates </h1>
+                <h1>Useful Resources for Understanding Certificates </h1>
 
                 <p>
                     Here is a list of useful web links summarizing some topics about certificates.
