@@ -2,11 +2,65 @@
 <html>
 <head>
     <title>Simple Code</title>
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <div class="simple">"Let's keep simple things simple"</div>
 </head>
 <body>
 <main class="container">
+
+    <article>
+        <header>
+            <h1>Python: * and ** Syntatic Rules</h1>
+            <div class="date">July 24, 2018</div>
+        </header>
+        <div class="rborder">
+            <div>
+                <p>
+                    Single * in a function definition means the function can take an arbitary number of arguments.
+                </p>
+                <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+<span class="n">func</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">)</span>
+</pre></div>
+                <p>
+                    Similarly, double ** in a function definition means the function can take an arbitary number of
+                    'keyworded arguments'
+                </p>
+
+<div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+<span class="n">func2</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;211&#39;</span><span class="p">,</span> <span class="n">company</span><span class="o">=</span><span class="s1">&#39;helloworld&#39;</span><span class="p">)</span>
+</pre></div>
+                <p>
+                    If double ** is used to call a function, it means 'unpacking' the argument.
+                </p>
+
+                <div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">func3</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">id</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">func3</span><span class="p">(</span><span class="o">**</span><span class="n">my_dict</span><span class="p">)</span>
+                </pre>
+                </div>
+
+                <p>
+                    What about single * when calling a function? Quite similar. Look at the next example.
+                </p>
+
+                <div class="highlight"><pre><span></span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;332&#39;</span><span class="p">,</span> <span class="s1">&#39;john&#39;</span><span class="p">)</span>
+
+<span class="n">func3</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+            </div>
+        </div>
+
+    </article>
 
     <article>
         <header>
