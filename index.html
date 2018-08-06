@@ -10,6 +10,52 @@
 
     <article>
         <header>
+            <h1>Python: Understanding Deadlock in Asynchronous Programming</h1>
+            <div class="date">August 7, 2018</div>
+        </header>
+        <div class="rborder">
+            <div>
+                <p>
+                    Starting from Python 3.5, writing an asynchronous program became much more intuitive with two new
+                    keywords namely <b>async</b> and <b>await</b>. Still, grasping the concept of Python asynchronous
+                    programming can be difficult and confusing, especially when working with a critical section.
+                </p>
+                <p>
+                    Here I will show you one example how a deadlock can occur with two coroutines and one lock.
+                </p>
+
+                <p>
+                    In multi-threaded programming, a simple deadlock situation is where two actors waiting for each
+                    other to lease the lock hold by another actor thus neither of them can do anything. (two locks and two actors are involved here)
+                    However, a deadlock can occur with just one lock in Python asynchronous programming.
+                </p>
+                <div class="highlight"><pre><span></span><span class="n">async</span> <span class="k">def</span> <span class="nf">co1</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">_LOCK</span><span class="p">:</span>
+        <span class="n">await</span> <span class="n">some_task</span><span class="p">()</span>
+
+<span class="n">async</span> <span class="k">def</span> <span class="nf">co2</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">_LOCK</span><span class="p">:</span>
+        <span class="c1"># ...</span>
+</pre></div>
+                <p>
+                    Let's assume <b>co1</b> coroutine first gets started. <b>co1</b> acquires the lock and execute the await line. At
+                    this point, the control of <b>co1</b> is passed to the event loop thus <b>co2</b> coroutine starts. Note that <b>co1</b>
+                    hasn't release the lock! Now <b>co2</b> coroutine tries to acquire the lock but it is hold by <b>co1</b> coroutine
+                    which is waiting for the control from <b>co2</b> coroutine. When this happens, your program will hang.
+                </p>
+                <p>
+                    One obvious solution is to avoid the pattern from the example - Don't call coroutines inside a lock.
+                    Giving a timeout to the lock can mitigate a deadlock but this could hide the root cause and make
+                    debugging more difficult.
+                </p>
+
+            </div>
+        </div>
+
+    </article>
+
+    <article>
+        <header>
             <h1>Python: * and ** Syntactic Rules</h1>
             <div class="date">July 24, 2018</div>
         </header>
